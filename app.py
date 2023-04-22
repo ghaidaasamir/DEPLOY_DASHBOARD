@@ -7,7 +7,7 @@ import importlib
 from dash.dependencies import Output, Input
 from dash import dcc
 from dash import html
-SamaWrapper = importlib.import_module('annotation.05_code.wrapper.sama_aws_wrapper.SamaWrapper')
+#SamaWrapper = importlib.import_module('annotation.05_code.wrapper.sama_aws_wrapper.SamaWrapper')
 
 class Postgresql():
 
@@ -189,18 +189,18 @@ class Postgresql():
  
 
 def show_table(update_db):
-    sama_wrapper = SamaWrapper()
+    #sama_wrapper = SamaWrapper()
     number_of_tasks = 3
     projects_names = ["Brightskies CFT1 AMPS TPF", #"Brightskies CFT1 AMPS RMF", "Brightskies CFT1 AMPS RMF - clone", "Brightskies CFT1 AMPS RMF_Scenario", "Brightskies CFT1 AMPS ENV", 
     "Brightskies CFT1 AMPS TCIS", "Brightskies CFT1 AMPS TCIL", "Brightskies CFT1 AMPS SEF"]
-    if update_db == True:
-        ex1.delete_table()
-        ex1.create_table()
-        for project_name in projects_names:
-            print(project_name)
-            table_db = sama_wrapper.get_tasks_status(project_name, number_of_tasks)
-            ex1.insert_into_table(table_db)
-        ex1.update_table({'Status':'in progress'})
+#     if update_db == True:
+#         ex1.delete_table()
+#         ex1.create_table()
+#         for project_name in projects_names:
+#             print(project_name)
+#             table_db = sama_wrapper.get_tasks_status(project_name, number_of_tasks)
+#             ex1.insert_into_table(table_db)
+#         ex1.update_table({'Status':'in progress'})
     df = ex1.read_from_table(column_names)
     df_obj = df.select_dtypes(['object'])
     df[df_obj.columns] = df_obj.apply(lambda x: x.str.strip())
