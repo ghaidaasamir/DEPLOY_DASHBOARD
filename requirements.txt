@@ -1,0 +1,5 @@
+dash==2.8.1
+dash_bootstrap_components==1.4.1
+pandas==1.5.3
+psycopg2==2.9.6
+gunicorn
