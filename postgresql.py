@@ -153,17 +153,15 @@ class Postgresql():
             pipeline_records = cursor.fetchall()
             # Now we need to transform the list into a pandas DataFrame:
             df = pd.DataFrame(pipeline_records, columns=column_names)
+            cursor.close()
+            connection.close()
+            print("PostgreSQL connection is closed")
+            return df
         
         except (Exception, psycopg2.Error) as error:
             print("Error while fetching data from PostgreSQL", error)
 
-        finally:
-            # closing database connection.
-            if connection:
-                cursor.close()
-                connection.close()
-                print("PostgreSQL connection is closed")
-                return df
+        
             
     def delete_table(self):   
         
