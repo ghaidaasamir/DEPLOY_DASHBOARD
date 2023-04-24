@@ -154,12 +154,13 @@ class Postgresql():
             # Now we need to transform the list into a pandas DataFrame:
             df = pd.DataFrame(pipeline_records, columns=column_names)
             cursor.close()
-        
+            print('1')
         except (Exception, psycopg2.Error) as error:
             print("Error while fetching data from PostgreSQL", error)
 
         finally:
             # closing database connection.
+            print('2')
             if connection:
                 cursor.close()
                 connection.close()
