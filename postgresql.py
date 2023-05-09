@@ -208,7 +208,12 @@ def show_table(update_db, ex1):
 
 def start_app():
     
-    ex1 = Postgresql(user="postgres",password="ghaidaa",host="127.0.0.1",port="5432",database="postgres")
+    #ex1 = Postgresql(user="postgres",password="ghaidaa",host="127.0.0.1",port="5432",database="postgres")
+    host = 'dpg-ch3ck9t269v61f9vc6dg-a.ohio-postgres.render.com'
+    database = 'dashboard_ffi5'
+    user = 'dashboard_ffi5_user'
+    password = 'BCnmOPY8uTDGYTUtmAyrgKoTe5XZVkhk'
+    ex1 = Postgresql(user=user,password=password,host=host,port="5432",database=database)
     update_db = False
     df, columns, dropdown = show_table(update_db, ex1)
     dropdown_Task_IDs = df['Task_ID'].unique()
